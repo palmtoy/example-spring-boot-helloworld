@@ -20,16 +20,12 @@ import ch.appuio.techlab.repository.HelloRepository;
 @RestController
 @RequestMapping("/hellos")
 public class HelloRestController {
-	private HelloRepository helloRepository;
-	
 	@Autowired
-	public void setHelloRepository(HelloRepository helloRepository) {
-		this.helloRepository = helloRepository;
-	}
+	private HelloRepository helloRepository;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public Collection<Hello> hellos(){
-		return helloRepository.findAllByOrderByIdDesc();
+		return helloRepository.findAllByOrderByIdAsc();
 	}
 	
 	@RequestMapping(value = "/{name}", method = RequestMethod.POST)

@@ -18,6 +18,8 @@ bootJar {
 }
 
 dependencies {
+	annotationProcessor('org.projectlombok:lombok:1.18.36')
+	compileOnly('org.projectlombok:lombok:1.18.36')
 	compileOnly('org.springframework.boot:spring-boot-starter-validation')
 	implementation('org.springframework.boot:spring-boot-starter')
 	implementation('org.springframework.boot:spring-boot-starter-actuator')
