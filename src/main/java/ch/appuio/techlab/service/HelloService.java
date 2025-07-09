@@ -16,14 +16,14 @@ public class HelloService {
 
     @Async
     public void deleteHelloAsync(Long helloId) {
-      LOGGER.info("_deleteHelloAsync ~ Start delete: {} at {}", helloId, System.currentTimeMillis());
+      LOGGER.trace("_deleteHelloAsync ~ Start delete helloId ( {} ) at {}", helloId, System.currentTimeMillis());
       try {
         Thread.sleep(6000);
       } catch (InterruptedException e) {
         LOGGER.error("_deleteHelloAsync ~ Error: {}", e.getMessage());
         Thread.currentThread().interrupt();
       }
-      LOGGER.info("_deleteHelloAsync ~ End delete: {} at {}", helloId, System.currentTimeMillis());
       helloRepository.deleteById(helloId);
+      LOGGER.trace("_deleteHelloAsync ~ End delete helloId ( {} ) at {}", helloId, System.currentTimeMillis());
     }
 }
