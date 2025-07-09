@@ -19,4 +19,9 @@
 			<column name="created" type="TIMESTAMP"/>
 		</createTable>
 	</changeSet>
+	<changeSet author="palmtoy" id="2-addUpdatedColumnToHello">
+		<addColumn tableName="hello">
+			<column name="updated" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+		</addColumn>
+	</changeSet>
 </databaseChangeLog>
