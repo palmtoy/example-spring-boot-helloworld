@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import ch.appuio.techlab.model.Hello;
+import ch.appuio.techlab.service.HelloService;
 import ch.appuio.techlab.repository.HelloRepository;
 
 @RestController
@@ -25,6 +26,8 @@ import ch.appuio.techlab.repository.HelloRepository;
 public class HelloRestController {
 	@Autowired
 	private HelloRepository helloRepository;
+	@Autowired
+	private HelloService helloService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public Collection<Hello> hellos(){
@@ -51,7 +54,7 @@ public class HelloRestController {
 	@Transactional
 	@DeleteMapping(value = "/{helloId}")
 	public ResponseEntity<?> delete(@PathVariable Long helloId) {
-		helloRepository.deleteById(helloId);
-		return new ResponseEntity<>(HttpStatus.OK);
+		helloService.deleteHelloAsync(helloId);
+		return new ResponseEntity<>(HttpStatus.ACCEPTED);
 	}
 }
