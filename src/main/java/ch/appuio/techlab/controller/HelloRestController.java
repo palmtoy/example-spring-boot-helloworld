@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Optional;
 
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -46,6 +48,7 @@ public class HelloRestController {
 	}
 
 	// curl -X DELETE -v http://localhost:8081/hellos/3
+	@Transactional
 	@DeleteMapping(value = "/{helloId}")
 	public ResponseEntity<?> delete(@PathVariable Long helloId) {
 		helloRepository.deleteById(helloId);
