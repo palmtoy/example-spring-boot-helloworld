@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 public class SpringBootDemoApplication {
 
+	// SPRING_APPLICATION_JSON='{"spring.datasource.password":"******"}' ./gradlew clean build bootRun
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootDemoApplication.class, args);
 	}
