@@ -35,7 +35,7 @@ public class HelloRestController {
 	}
 	
 	@RequestMapping(value = "/{name}", method = RequestMethod.POST)
-	public ResponseEntity<?> add(@PathVariable String name){
+	public ResponseEntity<?> add(@PathVariable("name") String name) {
 		Hello result = helloRepository.save(new Hello(name,
 				new Date()));
 		HttpHeaders httpHeaders = new HttpHeaders();
@@ -46,14 +46,14 @@ public class HelloRestController {
 	}
 	
 	@RequestMapping(value = "/{helloId}", method = RequestMethod.GET)
-	public Optional<Hello> get(@PathVariable Long helloId) {
+	public Optional<Hello> get(@PathVariable("helloId") Long helloId) {
 		return this.helloRepository.findById(helloId);
 	}
 
 	// curl -X DELETE -v http://localhost:8081/hellos/3
 	@Transactional
 	@DeleteMapping(value = "/{helloId}")
-	public ResponseEntity<?> delete(@PathVariable Long helloId) {
+	public ResponseEntity<?> delete(@PathVariable("helloId") Long helloId) {
 		helloService.deleteHelloAsync(helloId);
 		return new ResponseEntity<>(HttpStatus.ACCEPTED);
 	}
